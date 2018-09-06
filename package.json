@@ -1,0 +1,36 @@
+{
+	"name": "portfolio-mailer",
+	"version": "1.0.0",
+	"description": "Portfolio mailer",
+	"main": "./dist/app.js",
+	"scripts": {
+		"start": "node ./dist/app.js",
+		"dev": "nodemon ./dist/app.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/7aske/portfolio-mailer.git"
+	},
+	"keywords": [
+		"portfolio",
+		"mailer",
+		"nodejs",
+		"nodemailer"
+	],
+	"author": "Nikola Tasic",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/7aske/portfolio-mailer/issues"
+	},
+	"homepage": "https://github.com/7aske/portfolio-mailer#readme",
+	"dependencies": {
+		"@types/body-parser": "^1.17.0",
+		"@types/dotenv": "^4.0.3",
+		"@types/express": "^4.16.0",
+		"@types/nodemailer": "^4.6.2",
+		"body-parser": "^1.18.3",
+		"dotenv": "^6.0.0",
+		"express": "^4.16.3",
+		"nodemailer": "^4.6.8"
+	}
+}
