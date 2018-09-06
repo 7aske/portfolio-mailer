@@ -11,9 +11,14 @@ const PORT: number = process.env.PORT ? parseInt(process.env.PORT) : 3000;
 
 const transporter: nodemailer.Transporter = nodemailer.createTransport({
 	service: 'gmail',
+	secure: false,
+	port: 25,
 	auth: {
 		user: `${process.env.MAIL_USER}@gmail.com`,
 		pass: process.env.MAIL_PASS
+	},
+	tls: {
+		rejectUnauthorized: false
 	}
 });
 
@@ -39,6 +44,7 @@ router.post('/', (req: express.Request, res: express.Response) => {
 		};
 		transporter.sendMail(mailOptions, function(err, info) {
 			console.log(info);
+			console.log(err);
 			if (err) res.send({ error: 'Mail was not sent.' });
 			//@ts-ignore
 			else res.redirect(req.headers.origin);
