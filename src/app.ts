@@ -24,6 +24,8 @@ router.get('/', (req: express.Request, res: express.Response) => {
 	res.send('Hello!');
 });
 router.post('/', (req: express.Request, res: express.Response) => {
+	console.log(req.body);
+
 	const email: string = req.body.email;
 	const name: string = req.body.name;
 	const message: string = req.body.message;
