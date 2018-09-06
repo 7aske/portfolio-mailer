@@ -29,7 +29,10 @@ router.get('/', (req, res) => {
     res.send('Hello!');
 });
 router.post('/', (req, res) => {
-    console.log(req.body);
+    console.log(req.baseUrl);
+    console.log(req.host);
+    console.log(req.hostname);
+    console.log(req.path);
     const email = req.body.email;
     const name = req.body.name;
     const message = req.body.message;
@@ -45,7 +48,7 @@ router.post('/', (req, res) => {
             if (err)
                 res.send({ error: 'Mail was not sent.' });
             else
-                res.send({ success: 'Mail was sent.' });
+                res.redirect('/');
         });
     }
     else {

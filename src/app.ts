@@ -24,7 +24,12 @@ router.get('/', (req: express.Request, res: express.Response) => {
 	res.send('Hello!');
 });
 router.post('/', (req: express.Request, res: express.Response) => {
-	console.log(req.body);
+	console.log(req.baseUrl);
+	console.log(req.host);
+
+	console.log(req.hostname);
+
+	console.log(req.path);
 
 	const email: string = req.body.email;
 	const name: string = req.body.name;
@@ -39,7 +44,7 @@ router.post('/', (req: express.Request, res: express.Response) => {
 		transporter.sendMail(mailOptions, function(err, info) {
 			console.log(info);
 			if (err) res.send({ error: 'Mail was not sent.' });
-			else res.send({ success: 'Mail was sent.' });
+			else res.redirect('/');
 		});
 	} else {
 		res.send({ error: 'Invalid email/name/message parameters.' });
