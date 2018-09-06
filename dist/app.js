@@ -52,7 +52,7 @@ router.post('/', (req, res) => {
                 res.send({ error: 'Mail was not sent.' });
             //@ts-ignore
             else
-                res.redirect(req.headers.origin);
+                res.send({ success: 'Mail was sent.' });
         });
     }
     else {

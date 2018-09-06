@@ -47,7 +47,7 @@ router.post('/', (req: express.Request, res: express.Response) => {
 			console.log(err);
 			if (err) res.send({ error: 'Mail was not sent.' });
 			//@ts-ignore
-			else res.redirect(req.headers.origin);
+			else res.send({ success: 'Mail was sent.' });
 		});
 	} else {
 		res.send({ error: 'Invalid email/name/message parameters.' });
