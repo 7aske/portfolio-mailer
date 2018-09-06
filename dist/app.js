@@ -32,6 +32,7 @@ router.post('/', (req, res) => {
     const email = req.body.email;
     const name = req.body.name;
     const message = req.body.message;
+    console.log(email, name, message);
     if (email && name && message) {
         const mailOptions = {
             from: `${process.env.MAIL_USER}@gmail.com`,

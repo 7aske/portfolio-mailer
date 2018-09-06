@@ -28,6 +28,8 @@ router.post('/', (req: express.Request, res: express.Response) => {
 	const email: string = req.body.email;
 	const name: string = req.body.name;
 	const message: string = req.body.message;
+	console.log(email, name, message);
+
 	if (email && name && message) {
 		const mailOptions: nodemailer.SendMailOptions = {
 			from: `${process.env.MAIL_USER}@gmail.com`, // sender address
