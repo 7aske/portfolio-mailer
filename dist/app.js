@@ -29,10 +29,6 @@ router.get('/', (req, res) => {
     res.send('Hello!');
 });
 router.post('/', (req, res) => {
-    console.log(req.baseUrl);
-    console.log(req.host);
-    console.log(req.hostname);
-    console.log(req.path);
     const email = req.body.email;
     const name = req.body.name;
     const message = req.body.message;
@@ -47,8 +43,9 @@ router.post('/', (req, res) => {
             console.log(info);
             if (err)
                 res.send({ error: 'Mail was not sent.' });
+            //@ts-ignore
             else
-                res.redirect('/');
+                res.redirect(req.headers.origin);
         });
     }
     else {

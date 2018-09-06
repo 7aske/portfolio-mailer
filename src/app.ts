@@ -1,4 +1,5 @@
 import * as dotenv from 'dotenv';
+import * as url from 'url';
 dotenv.config();
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
@@ -24,13 +25,6 @@ router.get('/', (req: express.Request, res: express.Response) => {
 	res.send('Hello!');
 });
 router.post('/', (req: express.Request, res: express.Response) => {
-	console.log(req.baseUrl);
-	console.log(req.host);
-
-	console.log(req.hostname);
-
-	console.log(req.path);
-
 	const email: string = req.body.email;
 	const name: string = req.body.name;
 	const message: string = req.body.message;
@@ -44,7 +38,8 @@ router.post('/', (req: express.Request, res: express.Response) => {
 		transporter.sendMail(mailOptions, function(err, info) {
 			console.log(info);
 			if (err) res.send({ error: 'Mail was not sent.' });
-			else res.redirect('/');
+			//@ts-ignore
+			else res.redirect(req.headers.origin);
 		});
 	} else {
 		res.send({ error: 'Invalid email/name/message parameters.' });
